@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cogent Career Accelerator | Human-Led Career Acceleration</title>
+<meta name="description" content="Cogent Career Accelerator helps tech candidates improve their resumes, LinkedIn, GitHub, interview readiness, and in-demand skills with human-led support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cabinet+Grotesk:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#faf7f2;
+  --ink:#1a1510;
+  --warm:#f0e8d8;
+  --sage:#3d6b52;
+  --sage-light:#e8f0eb;
+  --sage-mid:#6b9e7f;
+  --rust:#c44b28;
+  --rust-light:#fae8e2;
+  --gold:#d4a843;
+  --gold-light:#fdf5e0;
+  --blue:#2a4a7f;
+  --blue-light:#e6ecf7;
+  --muted:#6b6459;
+  --border:rgba(26,21,16,0.12);
+  --nav-h:68px;
+}
+
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Cabinet Grotesk',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* Texture overlay */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.025;pointer-events:none;z-index:9999;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);
+  background:rgba(250,247,242,0.94);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);z-index:200;
+  display:flex;align-items:center;
+}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2.5rem;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{
+  font-family:'Playfair Display',serif;font-weight:900;font-size:1.15rem;
+  color:var(--ink);text-decoration:none;letter-spacing:-0.01em;
+  display:flex;align-items:center;gap:10px;
+}
+.nav-logo-pill{
+  font-family:'Cabinet Grotesk',sans-serif;
+  background:var(--sage);color:#fff;font-size:0.65rem;font-weight:700;
+  padding:3px 8px;border-radius:4px;letter-spacing:0.08em;text-transform:uppercase;
+}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.85rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--sage)}
+.nav-cta{
+  background:var(--ink)!important;color:var(--cream)!important;
+  padding:9px 20px;border-radius:6px;font-weight:700!important;
+  font-size:0.82rem!important;transition:background 0.2s!important;
+}
+.nav-cta:hover{background:var(--sage)!important}
+
+/* UTILITY */
+.container{max-width:1200px;margin:0 auto;padding:0 2.5rem}
+.section-eyebrow{
+  font-family:'Cabinet Grotesk',sans-serif;
+  font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  margin-bottom:1rem;display:inline-flex;align-items:center;gap:8px;
+}
+.section-eyebrow::before{content:'';width:20px;height:1.5px;background:currentColor;display:block}
+h1,h2,h3{font-family:'Playfair Display',serif;letter-spacing:-0.02em}
+h1{font-size:clamp(3rem,6vw,5.5rem);font-weight:900;line-height:1.0}
+h2{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;line-height:1.1}
+h3{font-size:1.3rem;font-weight:700;line-height:1.3}
+
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'Cabinet Grotesk',sans-serif;
+  font-size:0.875rem;font-weight:700;
+  padding:12px 26px;border-radius:6px;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:all 0.22s;white-space:nowrap;
+}
+.btn-primary{background:var(--ink);color:var(--cream)}
+.btn-primary:hover{background:var(--sage);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border:2px solid var(--border)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-sage{background:var(--sage);color:#fff}
+.btn-sage:hover{background:#2d5240;transform:translateY(-2px)}
+.btn-rust{background:var(--rust);color:#fff}
+.btn-rust:hover{background:#a83d20;transform:translateY(-2px)}
+
+/* ─── HERO ─── */
+#home{
+  padding-top:calc(var(--nav-h) + 60px);
+  padding-bottom:0;
+  background:var(--cream);
+  overflow:hidden;
+  position:relative;
+}
+.hero-layout{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:4rem;
+  align-items:end;
+  min-height:calc(100vh - var(--nav-h));
+  padding-bottom:0;
+}
+.hero-left{padding-bottom:80px;padding-top:40px}
+.hero-eyebrow{color:var(--sage);margin-bottom:1.5rem}
+.hero-h1{margin-bottom:1.5rem}
+.hero-h1 em{font-style:italic;color:var(--sage)}
+.hero-sub{
+  font-size:1.1rem;color:var(--muted);
+  max-width:520px;line-height:1.75;margin-bottom:2.5rem;
+}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.hero-stats{
+  display:flex;gap:2.5rem;flex-wrap:wrap;
+  padding-top:2rem;border-top:1px solid var(--border);
+}
+.stat{text-align:left}
+.stat-n{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;font-weight:900;color:var(--ink);line-height:1;
+  display:block;
+}
+.stat-l{font-size:0.78rem;color:var(--muted);margin-top:2px;line-height:1.3}
+
+/* ILLUSTRATED CHARACTER — right column */
+.hero-right{
+  position:relative;
+  align-self:end;
+  height:620px;
+}
+.char-scene{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;justify-content:center;
+}
+
+/* FLOATING CARDS around character */
+.float-card{
+  position:absolute;
+  background:#fff;border:1px solid var(--border);
+  border-radius:12px;padding:10px 14px;
+  box-shadow:0 4px 24px rgba(26,21,16,0.08);
+  font-size:0.78rem;font-weight:600;
+  animation:floatUp 3s ease-in-out infinite alternate;
+}
+.float-card.c1{top:40px;left:-10px;color:var(--sage);border-color:rgba(61,107,82,0.2);background:var(--sage-light);animation-delay:0s}
+.float-card.c2{top:120px;right:-20px;color:var(--rust);border-color:rgba(196,75,40,0.2);background:var(--rust-light);animation-delay:0.8s}
+.float-card.c3{top:240px;left:-30px;color:var(--blue);border-color:rgba(42,74,127,0.2);background:var(--blue-light);animation-delay:1.4s}
+.float-card.c4{bottom:160px;right:-10px;color:var(--gold);border-color:rgba(212,168,67,0.2);background:var(--gold-light);animation-delay:0.4s}
+.float-card .fc-icon{font-size:14px;margin-right:4px}
+
+@keyframes floatUp{
+  from{transform:translateY(0px)}
+  to{transform:translateY(-10px)}
+}
+
+/* Decorative background blobs */
+.blob{
+  position:absolute;border-radius:50%;filter:blur(60px);opacity:0.18;pointer-events:none;
+}
+.blob-1{width:400px;height:400px;background:var(--sage);top:-100px;right:-100px}
+.blob-2{width:300px;height:300px;background:var(--gold);bottom:100px;left:-80px}
+.blob-3{width:250px;height:250px;background:var(--rust);top:200px;right:50px}
+
+/* ─── TAPE DIVIDER ─── */
+.tape-bar{
+  background:var(--ink);color:var(--cream);
+  padding:16px 0;
+  overflow:hidden;white-space:nowrap;
+}
+.tape-track{
+  display:inline-flex;gap:0;
+  animation:slide 20s linear infinite;
+}
+.tape-item{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:1.1rem;
+  padding:0 2.5rem;
+  border-right:1px solid rgba(255,255,255,0.2);
+}
+.tape-item span{color:var(--gold);margin-left:2.5rem}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── PROBLEM ─── */
+#problem{
+  background:var(--ink);
+  padding:110px 0;
+  position:relative;overflow:hidden;
+}
+.problem-deco{
+  position:absolute;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(120px,20vw,220px);font-weight:900;
+  color:rgba(255,255,255,0.025);
+  line-height:1;pointer-events:none;
+  top:50%;transform:translateY(-50%);
+  right:-2%;
+  white-space:nowrap;
+}
+#problem .section-eyebrow{color:#6ee7b7}
+#problem h2{color:#fff;max-width:680px;margin-bottom:1rem}
+.problem-intro{color:rgba(255,255,255,0.5);max-width:540px;margin-bottom:3.5rem;font-size:1.05rem}
+.problem-trio{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;
+}
+.prob-item{
+  background:var(--ink);padding:2.5rem 2rem;
+  transition:background 0.3s;cursor:default;
+}
+.prob-item:hover{background:#1f1b15}
+.prob-num{
+  font-family:'Playfair Display',serif;
+  font-size:5rem;font-weight:900;
+  color:rgba(255,255,255,0.04);
+  line-height:1;margin-bottom:1.25rem;display:block;
+}
+.prob-item h3{color:#fff;font-size:1.1rem;margin-bottom:0.75rem}
+.prob-item p{color:rgba(255,255,255,0.45);font-size:0.875rem;line-height:1.7}
+
+/* Character stuck on problem section */
+.problem-char-wrap{
+  position:absolute;bottom:0;right:10%;
+  opacity:0.12;
+  pointer-events:none;
+}
+
+/* ─── THREE PILLARS ─── */
+#pillars{
+  padding:110px 0;
+  background:var(--cream);
+  position:relative;
+}
+.pillars-intro{margin-bottom:4rem}
+.pillars-intro h2{max-width:640px;margin-bottom:1rem}
+.pillars-intro p{color:var(--muted);max-width:540px;font-size:1.05rem}
+.pillars-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+}
+.pillar-card{
+  border-radius:16px;padding:2.5rem;
+  position:relative;overflow:hidden;
+  transition:transform 0.3s;
+}
+.pillar-card:hover{transform:translateY(-4px)}
+.pillar-card.apply{background:var(--ink);color:#fff}
+.pillar-card.prepare{background:var(--sage);color:#fff}
+.pillar-card.upskill{background:var(--rust);color:#fff}
+.pillar-tag{
+  font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  opacity:0.6;margin-bottom:1.5rem;display:block;
+}
+.pillar-num{
+  font-family:'Playfair Display',serif;
+  font-size:5rem;font-weight:900;
+  line-height:1;margin-bottom:0.75rem;
+  opacity:0.08;position:absolute;bottom:1.5rem;right:1.5rem;
+}
+.pillar-card h3{font-size:2rem;font-weight:900;margin-bottom:1rem;color:inherit}
+.pillar-card p{font-size:0.9rem;opacity:0.75;line-height:1.7}
+.pillar-icon{
+  font-size:2.5rem;margin-bottom:1.5rem;display:block;
+}
+
+/* ─── HOW IT WORKS ─── */
+#how{
+  background:var(--warm);
+  padding:110px 0;
+}
+#how .section-eyebrow{color:var(--sage)}
+.how-layout{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:start;
+}
+.how-left h2{margin-bottom:1.25rem}
+.how-left p{color:var(--muted);font-size:1.05rem;margin-bottom:2.5rem}
+.how-steps{display:flex;flex-direction:column;gap:0}
+.how-step{
+  display:flex;gap:1.5rem;padding:1.75rem 0;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.how-step:last-child{border-bottom:none}
+.step-bubble{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--ink);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:900;font-size:1rem;
+  flex-shrink:0;margin-top:2px;
+}
+.how-step h3{font-size:1rem;margin-bottom:0.3rem}
+.how-step p{font-size:0.875rem;color:var(--muted)}
+
+/* How right: illustrated panel */
+.how-right{
+  background:var(--ink);border-radius:20px;
+  padding:2.5rem;position:relative;overflow:hidden;
+}
+.how-right-quote{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:1.5rem;font-weight:700;
+  color:#fff;line-height:1.4;
+  margin-bottom:2rem;
+  position:relative;z-index:1;
+}
+.how-right-quote::before{
+  content:'\201C';
+  font-size:6rem;color:var(--gold);
+  position:absolute;top:-2rem;left:-1rem;
+  opacity:0.3;line-height:1;
+}
+.how-cta-blk{
+  background:rgba(255,255,255,0.06);border-radius:12px;padding:1.5rem;
+  position:relative;z-index:1;
+}
+.how-cta-blk p{color:rgba(255,255,255,0.6);font-size:0.85rem;margin-bottom:1rem}
+.how-right-deco{
+  position:absolute;bottom:-40px;right:-40px;
+  font-family:'Playfair Display',serif;font-size:160px;font-weight:900;
+  color:rgba(255,255,255,0.03);line-height:1;pointer-events:none;
+}
+
+/* ─── PRICING ─── */
+#pricing{
+  padding:110px 0;background:var(--cream);
+  position:relative;
+}
+#pricing .section-eyebrow{color:var(--sage)}
+.pricing-header{text-align:center;margin-bottom:1rem}
+.pricing-sub{text-align:center;color:var(--muted);font-size:1.05rem;margin-bottom:1rem}
+.pricing-sub2{
+  text-align:center;font-size:0.82rem;color:var(--muted);
+  margin-bottom:4rem;
+}
+
+.plans-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;align-items:start;
+}
+.plan{
+  border-radius:16px;overflow:hidden;
+  border:1.5px solid var(--border);
+  background:#fff;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.plan:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(26,21,16,0.1)}
+.plan.hot{border-color:var(--sage);border-width:2px}
+.plan-badge{
+  background:var(--sage);color:#fff;
+  font-size:0.68rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  text-align:center;padding:7px;
+}
+.plan-top{padding:2rem 2rem 1.5rem}
+.plan-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:900;margin-bottom:4px;
+}
+.plan-for{font-size:0.8rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.5}
+.plan-price{display:flex;align-items:baseline;gap:3px;margin-bottom:0.5rem}
+.plan-dollar{font-size:1.1rem;font-weight:600;color:var(--muted);margin-bottom:6px}
+.plan-amt{
+  font-family:'Playfair Display',serif;
+  font-size:4rem;font-weight:900;line-height:1;color:var(--ink);
+}
+.plan-desc{font-size:0.8rem;color:var(--muted);font-style:italic;margin-bottom:1.5rem}
+.plan-btn{display:block;text-align:center}
+hr.pdiv{border:none;border-top:1px solid var(--border);margin:0}
+.plan-feats{padding:1.75rem 2rem}
+.feat-grp{margin-bottom:1.5rem}
+.feat-grp:last-child{margin-bottom:0}
+.feat-grp-lbl{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--sage);margin-bottom:0.5rem;
+}
+.feat-row{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:0.83rem;color:var(--muted);line-height:1.5;margin-bottom:0.35rem;
+}
+.feat-check{color:var(--sage);font-size:0.75rem;margin-top:1px;flex-shrink:0;font-weight:700}
+
+.chooser-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  background:var(--warm);border-radius:14px;padding:2rem;
+  margin-top:2.5rem;
+}
+.cs-item strong{display:block;font-size:0.9rem;color:var(--ink);margin-bottom:0.3rem}
+.cs-item span{font-size:0.8rem;color:var(--muted)}
+
+/* ─── FREE TOOLS ─── */
+#tools{
+  background:var(--ink);padding:110px 0;
+  position:relative;overflow:hidden;
+}
+.tools-blob{
+  position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;
+}
+.tools-blob-1{width:500px;height:500px;background:var(--sage);top:-100px;right:-100px;opacity:0.08}
+.tools-blob-2{width:350px;height:350px;background:var(--rust);bottom:-80px;left:-80px;opacity:0.07}
+#tools .section-eyebrow{color:#6ee7b7}
+.tools-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;gap:2rem;flex-wrap:wrap}
+.tools-header h2{color:#fff;max-width:560px}
+.tools-header p{color:rgba(255,255,255,0.5);font-size:0.9rem;max-width:280px;text-align:right}
+
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.tool{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:16px;padding:2rem;
+  transition:border-color 0.3s,background 0.3s;
+  display:flex;flex-direction:column;
+}
+.tool:hover{border-color:rgba(110,231,183,0.25);background:rgba(255,255,255,0.06)}
+.tool-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem}
+.tool-icon{
+  width:48px;height:48px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+}
+.tool-icon.a{background:rgba(110,231,183,0.1)}
+.tool-icon.b{background:rgba(212,168,67,0.1)}
+.tool-icon.c{background:rgba(196,75,40,0.1)}
+.tool-time{
+  font-size:0.72rem;color:rgba(255,255,255,0.35);
+  background:rgba(255,255,255,0.06);
+  padding:4px 10px;border-radius:100px;
+}
+.tool h3{color:#fff;font-size:1.05rem;margin-bottom:0.5rem}
+.tool p{font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:1.25rem}
+.tool-checks{margin-bottom:1.5rem;flex:1}
+.tool-check{
+  font-size:0.8rem;color:rgba(255,255,255,0.4);
+  margin-bottom:0.3rem;display:flex;gap:8px;
+}
+.tool-check::before{content:'→';color:#6ee7b7;flex-shrink:0}
+.tool-result-box{
+  background:rgba(110,231,183,0.06);
+  border:1px solid rgba(110,231,183,0.12);
+  border-radius:10px;padding:1rem;margin-bottom:1.25rem;
+}
+.trb-lbl{font-size:0.65rem;color:#6ee7b7;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.35rem}
+.tool-result-box p{font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.55;margin:0}
+.tool-cta{
+  display:block;width:100%;text-align:center;
+  background:rgba(255,255,255,0.07);
+  color:rgba(255,255,255,0.7);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:11px;border-radius:8px;
+  font-family:'Cabinet Grotesk',sans-serif;
+  font-size:0.85rem;font-weight:600;
+  text-decoration:none;cursor:pointer;
+  transition:all 0.2s;
+}
+.tool-cta:hover{background:var(--sage);color:#fff;border-color:transparent}
+
+/* ─── STORIES ─── */
+#stories{
+  padding:110px 0;background:var(--warm);
+}
+#stories .section-eyebrow{color:var(--rust)}
+.stories-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;gap:2rem;flex-wrap:wrap}
+.stories-hd h2{max-width:600px}
+.stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:0}
+.story{
+  background:#fff;border:1px solid var(--border);
+  border-radius:16px;padding:2rem;
+  display:flex;flex-direction:column;gap:1.25rem;
+}
+.story-tag{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--rust);
+}
+.story h3{font-size:1rem;line-height:1.4;color:var(--ink)}
+.story-ba{display:flex;flex-direction:column;gap:0.75rem;flex:1}
+.ba{border-radius:10px;padding:1rem;border-left:3px solid transparent}
+.ba.before{background:var(--warm);border-left-color:var(--border)}
+.ba.after{background:var(--sage-light);border-left-color:var(--sage)}
+.ba-lbl{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem;color:var(--muted)}
+.ba.after .ba-lbl{color:var(--sage)}
+.ba p{font-size:0.82rem;color:var(--muted);line-height:1.55}
+.ba.after p{color:var(--sage)}
+
+/* ─── FAQ ─── */
+#faq{
+  padding:110px 0;background:var(--cream);
+}
+#faq .section-eyebrow{color:var(--sage)}
+.faq-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start}
+.faq-left h2{margin-bottom:1rem}
+.faq-left p{color:var(--muted);margin-bottom:2rem;font-size:1rem}
+.faq-illo{
+  background:var(--ink);border-radius:20px;padding:2.5rem;
+  text-align:center;
+}
+.faq-illo-quote{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:1.1rem;color:rgba(255,255,255,0.7);
+  line-height:1.6;margin-bottom:1.5rem;
+}
+.faq-items{display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{
+  width:100%;background:none;border:none;cursor:pointer;
+  text-align:left;padding:1.25rem 0;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+  font-family:'Cabinet Grotesk',sans-serif;font-size:0.95rem;font-weight:700;
+  color:var(--ink);line-height:1.4;transition:color 0.2s;
+}
+.faq-q:hover{color:var(--sage)}
+.fq-icon{
+  width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--muted);flex-shrink:0;
+  transition:all 0.25s;margin-top:1px;
+}
+.faq-item.open .fq-icon{background:var(--sage);border-color:var(--sage);color:#fff;transform:rotate(45deg)}
+.faq-a{
+  font-size:0.875rem;color:var(--muted);line-height:1.7;
+  padding-bottom:1.25rem;display:none;
+}
+.faq-item.open .faq-a{display:block}
+
+/* ─── FINAL CTA ─── */
+#cta{
+  background:var(--ink);padding:120px 0;
+  text-align:center;position:relative;overflow:hidden;
+}
+#cta::before{
+  content:'Walk beside you';
+  position:absolute;
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(60px,12vw,160px);font-weight:900;
+  color:rgba(255,255,255,0.025);
+  white-space:nowrap;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+  width:200%;text-align:center;
+}
+#cta .section-eyebrow{color:#6ee7b7;justify-content:center}
+#cta h2{color:#fff;max-width:680px;margin:0 auto 1.25rem}
+#cta p{color:rgba(255,255,255,0.5);max-width:460px;margin:0 auto 2.5rem}
+.cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+
+/* ─── FOOTER ─── */
+footer{
+  background:#0f0c09;padding:2.5rem 0;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+.footer-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{
+  font-family:'Playfair Display',serif;font-weight:900;
+  color:rgba(255,255,255,0.5);font-size:1rem;
+}
+.footer-links{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
+.footer-links a{font-size:0.78rem;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.7)}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.2)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-layout,.how-layout,.faq-layout{grid-template-columns:1fr}
+  .hero-right{height:350px}
+  .problem-trio,.pillars-grid,.plans-grid,.tools-grid,.stories-grid{grid-template-columns:1fr}
+  .chooser-strip{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .tools-header,.stories-hd{flex-direction:column;align-items:flex-start}
+  .tools-header p{text-align:left;max-width:none}
+  section{padding:70px 0}
+}
+
+/* Entrance animations */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero-left > *{
+  animation:fadeUp 0.7s ease both;
+}
+.hero-left > *:nth-child(1){animation-delay:0.1s}
+.hero-left > *:nth-child(2){animation-delay:0.2s}
+.hero-left > *:nth-child(3){animation-delay:0.35s}
+.hero-left > *:nth-child(4){animation-delay:0.5s}
+.hero-left > *:nth-child(5){animation-delay:0.65s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      Cogent <span class="nav-logo-pill">Career</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#pillars">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#tools">Free Tools</a></li>
+      <li><a href="#stories">Outcomes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#tools" class="nav-cta">Free Assessment</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="home">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-left">
+        <div class="section-eyebrow hero-eyebrow">Human-Led Career Acceleration</div>
+        <h1 class="hero-h1">Job hunting is the loneliest grind.<br><em>We walk beside you.</em></h1>
+        <p class="hero-sub">We apply for roles on your behalf, prep you for every interview, and give you back the hours you spent alone at midnight refreshing your inbox.</p>
+        <div class="hero-ctas">
+          <a href="#tools" class="btn btn-primary">Free Assessment Tools</a>
+          <a href="#pricing" class="btn btn-ghost">Explore Plans</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-n">15+</span>
+            <span class="stat-l">Years recruitment<br>experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n">1,650+</span>
+            <span class="stat-l">Students<br>placed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n">3,500+</span>
+            <span class="stat-l">Offers<br>made</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n">82K</span>
+            <span class="stat-l">Average<br>salary</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Illustrated right panel -->
+      <div class="hero-right">
+        <!-- Floating context cards -->
+        <div class="float-card c1"><span class="fc-icon">✓</span>Resume reviewed by humans</div>
+        <div class="float-card c2"><span class="fc-icon">📊</span>LinkedIn profile upgraded</div>
+        <div class="float-card c3"><span class="fc-icon">⚙️</span>GitHub audit complete</div>
+        <div class="float-card c4"><span class="fc-icon">🏆</span>Offer received!</div>
+
+        <!-- Illustrated SVG character -->
+        <div class="char-scene">
+          <svg width="340" height="520" viewBox="0 0 340 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Desk surface -->
+            <rect x="20" y="400" width="300" height="16" rx="4" fill="#1a1510" opacity="0.08"/>
+            <!-- Monitor stand -->
+            <rect x="152" y="340" width="36" height="60" rx="4" fill="#d4c9b8"/>
+            <rect x="130" y="394" width="80" height="10" rx="3" fill="#c4b9a8"/>
+            <!-- Monitor screen -->
+            <rect x="80" y="220" width="180" height="130" rx="10" fill="#1a1510"/>
+            <rect x="88" y="228" width="164" height="114" rx="6" fill="#2d4a3a"/>
+            <!-- Screen content lines -->
+            <rect x="100" y="242" width="80" height="6" rx="2" fill="rgba(110,231,183,0.6)"/>
+            <rect x="100" y="255" width="120" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+            <rect x="100" y="265" width="100" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+            <rect x="100" y="275" width="110" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+            <rect x="100" y="292" width="60" height="18" rx="4" fill="rgba(110,231,183,0.8)"/>
+            <!-- Screen glow -->
+            <ellipse cx="170" cy="285" rx="70" ry="45" fill="rgba(61,107,82,0.15)" filter="url(#glow)"/>
+            <defs>
+              <filter id="glow"><feGaussianBlur stdDeviation="12"/></filter>
+            </defs>
+
+            <!-- Chair -->
+            <rect x="120" y="370" width="100" height="60" rx="8" fill="#3d2b1a"/>
+            <rect x="115" y="428" width="110" height="8" rx="3" fill="#2d1f12"/>
+            <!-- Chair legs -->
+            <rect x="125" y="430" width="8" height="40" rx="3" fill="#2d1f12"/>
+            <rect x="207" y="430" width="8" height="40" rx="3" fill="#2d1f12"/>
+            <ellipse cx="129" cy="472" rx="14" ry="6" fill="#1a1510" opacity="0.15"/>
+            <ellipse cx="211" cy="472" rx="14" ry="6" fill="#1a1510" opacity="0.15"/>
+
+            <!-- Person body -->
+            <rect x="140" y="300" width="60" height="80" rx="10" fill="#c4472a"/>
+            <!-- Collar -->
+            <path d="M155 300 L170 318 L185 300" fill="#fff" opacity="0.9"/>
+            <!-- Arms -->
+            <rect x="100" y="308" width="44" height="20" rx="10" fill="#c4472a"/>
+            <rect x="196" y="308" width="44" height="20" rx="10" fill="#c4472a"/>
+            <!-- Hands on keyboard -->
+            <ellipse cx="118" cy="318" rx="16" ry="10" fill="#f0c8a0"/>
+            <ellipse cx="222" cy="318" rx="16" ry="10" fill="#f0c8a0"/>
+            <!-- Neck -->
+            <rect x="160" y="270" width="20" height="34" rx="5" fill="#f0c8a0"/>
+            <!-- Head -->
+            <ellipse cx="170" cy="248" rx="36" ry="38" fill="#f0c8a0"/>
+            <!-- Hair -->
+            <path d="M134 240 Q136 208 170 202 Q204 208 206 240 Q200 218 170 215 Q140 218 134 240Z" fill="#2d1a0a"/>
+            <!-- Eyes -->
+            <ellipse cx="158" cy="245" rx="5" ry="6" fill="#fff"/>
+            <ellipse cx="182" cy="245" rx="5" ry="6" fill="#fff"/>
+            <circle cx="160" cy="246" r="3" fill="#2d1a0a"/>
+            <circle cx="184" cy="246" r="3" fill="#2d1a0a"/>
+            <!-- Smile -->
+            <path d="M159 260 Q170 270 181 260" stroke="#2d1a0a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Glasses -->
+            <rect x="148" y="240" width="18" height="14" rx="5" stroke="#1a1510" stroke-width="2" fill="none" opacity="0.5"/>
+            <rect x="174" y="240" width="18" height="14" rx="5" stroke="#1a1510" stroke-width="2" fill="none" opacity="0.5"/>
+            <line x1="166" y1="246" x2="174" y2="246" stroke="#1a1510" stroke-width="1.5" opacity="0.5"/>
+
+            <!-- Keyboard -->
+            <rect x="105" y="388" width="130" height="18" rx="4" fill="#e0d8cc"/>
+            <!-- Key rows -->
+            <rect x="110" y="391" width="8" height="6" rx="1" fill="#c4b9a8"/>
+            <rect x="121" y="391" width="8" height="6" rx="1" fill="#c4b9a8"/>
+            <rect x="132" y="391" width="8" height="6" rx="1" fill="#c4b9a8"/>
+            <rect x="143" y="391" width="8" height="6" rx="1" fill="#c4b9a8"/>
+            <rect x="154" y="391" width="8" height="6" rx="1" fill="#c4b9a8"/>
+            <rect x="165" y="391" width="8" height="6" rx="1" fill="#c4b9a8"/>
+            <rect x="176" y="391" width="8" height="6" rx="1" fill="#c4b9a8"/>
+            <rect x="187" y="391" width="8" height="6" rx="1" fill="#c4b9a8"/>
+            <rect x="198" y="391" width="8" height="6" rx="1" fill="#c4b9a8"/>
+            <rect x="120" y="400" width="100" height="5" rx="1" fill="#c4b9a8"/>
+
+            <!-- Shadow under whole scene -->
+            <ellipse cx="170" cy="480" rx="130" ry="20" fill="#1a1510" opacity="0.07"/>
+
+            <!-- Stars / sparkles -->
+            <text x="44" y="180" font-size="20" fill="#d4a843" opacity="0.7">✦</text>
+            <text x="290" y="190" font-size="14" fill="#3d6b52" opacity="0.6">✦</text>
+            <text x="70" y="310" font-size="10" fill="#c44b28" opacity="0.5">✦</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="tape-bar">
+  <div class="tape-track" id="tape">
+    <span class="tape-item">Resume <span>→</span></span>
+    <span class="tape-item">LinkedIn Profile <span>→</span></span>
+    <span class="tape-item">GitHub Portfolio <span>→</span></span>
+    <span class="tape-item">Mock Interviews <span>→</span></span>
+    <span class="tape-item">Behavioral Prep <span>→</span></span>
+    <span class="tape-item">Offer Negotiation <span>→</span></span>
+    <span class="tape-item">Micro-Courses <span>→</span></span>
+    <span class="tape-item">Application Support <span>→</span></span>
+    <span class="tape-item">Resume <span>→</span></span>
+    <span class="tape-item">LinkedIn Profile <span>→</span></span>
+    <span class="tape-item">GitHub Portfolio <span>→</span></span>
+    <span class="tape-item">Mock Interviews <span>→</span></span>
+    <span class="tape-item">Behavioral Prep <span>→</span></span>
+    <span class="tape-item">Offer Negotiation <span>→</span></span>
+    <span class="tape-item">Micro-Courses <span>→</span></span>
+    <span class="tape-item">Application Support <span>→</span></span>
+  </div>
+</div>
+
+<!-- ─── PROBLEM ─── -->
+<section id="problem">
+  <div class="problem-deco">Alone?</div>
+  <div class="container">
+    <div class="section-eyebrow" style="color:#6ee7b7">The real problem</div>
+    <h2 style="color:#fff;margin-bottom:1rem">The job search has<br>become a full-time job.</h2>
+    <p class="problem-intro">Most candidates are doing it entirely alone — burning hours, confidence, and time.</p>
+    <div class="problem-trio">
+      <div class="prob-item">
+        <span class="prob-num">01</span>
+        <h3>Applying but not hearing back</h3>
+        <p>Your resume may not align with the role. Your LinkedIn may not include the right keywords. Your projects may not clearly demonstrate your technical ability.</p>
+      </div>
+      <div class="prob-item">
+        <span class="prob-num">02</span>
+        <h3>Getting interviews but not converting</h3>
+        <p>You may be struggling to explain your projects, handle technical questions, structure behavioral answers, or communicate your value clearly under pressure.</p>
+      </div>
+      <div class="prob-item">
+        <span class="prob-num">03</span>
+        <h3>Too many tools, still feeling alone</h3>
+        <p>You are using resume checkers, LinkedIn tips, YouTube prep videos — but without a human in your corner, it still feels like guessing in the dark.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── THREE PILLARS ─── -->
+<section id="pillars">
+  <div class="container">
+    <div class="pillars-intro">
+      <div class="section-eyebrow" style="color:var(--sage)">Not another tool</div>
+      <h2>A team in your corner.</h2>
+      <p>Cogent Career Accelerator combines human-reviewed career services, interview preparation, role-matched application support, and focused micro-upskilling.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card apply">
+        <span class="pillar-tag">Pillar 01</span>
+        <span class="pillar-icon">🚀</span>
+        <h3>Apply</h3>
+        <p>Application support for eligible candidates. We help identify relevant roles, tailor application materials, and reduce the repetitive work that drains time and confidence.</p>
+        <span class="pillar-num">01</span>
+      </div>
+      <div class="pillar-card prepare">
+        <span class="pillar-tag">Pillar 02</span>
+        <span class="pillar-icon">🎯</span>
+        <h3>Prepare</h3>
+        <p>Resume, LinkedIn, GitHub, technical test feedback, mock interviews, behavioral prep, and role-specific interview practice — with human reviewers, not automated templates.</p>
+        <span class="pillar-num">02</span>
+      </div>
+      <div class="pillar-card upskill">
+        <span class="pillar-tag">Pillar 03</span>
+        <span class="pillar-icon">⚡</span>
+        <h3>Upskill</h3>
+        <p>Short, focused micro-courses in high-demand areas — AI, cybersecurity, LLM applications, RAG, graph databases, and Excel with AI. Close the gap that's costing you the role.</p>
+        <span class="pillar-num">03</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section id="how">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--sage)">The process</div>
+    <div class="how-layout">
+      <div class="how-left">
+        <h2>Five steps.<br>One clearer you.</h2>
+        <p>Tell us where you are. We'll help you get where you need to be.</p>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="step-bubble">1</div>
+            <div>
+              <h3>Tell us your current profile and goal</h3>
+              <p>Share your resume, LinkedIn, GitHub, target roles, and biggest job-search blocker.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="step-bubble">2</div>
+            <div>
+              <h3>Get a career-readiness view</h3>
+              <p>We review where your resume, LinkedIn, GitHub, skills, and interview prep stand today.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="step-bubble">3</div>
+            <div>
+              <h3>Choose the right support path</h3>
+              <p>Pick career services, micro-upskilling, application support, or a combined plan.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="step-bubble">4</div>
+            <div>
+              <h3>Work with human reviewers and coaches</h3>
+              <p>Your profile and preparation are reviewed by people, not automated templates.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="step-bubble">5</div>
+            <div>
+              <h3>Keep improving through the process</h3>
+              <p>As your target roles become clearer, your materials and interview stories get refined.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="how-right">
+        <div class="how-right-quote">
+          The goal is simple: to help you show up as a clearer, stronger, and better-prepared candidate.
+        </div>
+        <div class="how-cta-blk">
+          <p>Ready to find out what's holding your career profile back?</p>
+          <a href="#tools" class="btn btn-sage" style="width:100%;justify-content:center">Get Free Career Audit</a>
+        </div>
+
+        <!-- Small illustrated person reading -->
+        <svg style="position:absolute;bottom:1.5rem;right:1.5rem;opacity:0.12" width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="24" rx="18" ry="20" fill="#fff"/>
+          <rect x="22" y="44" width="36" height="40" rx="8" fill="#fff"/>
+          <rect x="8" y="50" width="18" height="10" rx="5" fill="#fff"/>
+          <rect x="54" y="50" width="18" height="10" rx="5" fill="#fff"/>
+          <rect x="18" y="82" width="12" height="20" rx="4" fill="#fff"/>
+          <rect x="50" y="82" width="12" height="20" rx="4" fill="#fff"/>
+        </svg>
+        <div class="how-right-deco">5</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <div class="section-eyebrow" style="color:var(--sage);justify-content:center">Pricing</div>
+      <h2>Choose the support you need.<br>Add depth when you're ready.</h2>
+    </div>
+    <p class="pricing-sub">Flexible plans and expert prep. Honest pricing. No hidden fees.</p>
+    <p class="pricing-sub2">Build the career support plan that fits your goal.</p>
+
+    <div class="plans-grid">
+
+      <!-- Plan 1 -->
+      <div class="plan">
+        <div class="plan-top">
+          <div class="plan-name">Interview Accelerator</div>
+          <div class="plan-for">Skilled candidates not getting enough interview calls</div>
+          <div class="plan-price">
+            <span class="plan-dollar">$</span>
+            <span class="plan-amt">499</span>
+          </div>
+          <div class="plan-desc">For skilled coders not getting interview invites</div>
+          <a href="#tools" class="btn btn-ghost plan-btn">Start Getting Interview Calls →</a>
+        </div>
+        <hr class="pdiv">
+        <div class="plan-feats">
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Resume / CV</div>
+            <div class="feat-row"><span class="feat-check">✓</span>3 human rewrites focused on Java/Data keywords and role alignment</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Cover Letter</div>
+            <div class="feat-row"><span class="feat-check">✓</span>1 custom cover letter aligned with resume narrative</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">LinkedIn</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Profile overhaul — headline, About rewrite, keyword placement map</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">GitHub</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Repo video audit — 5–10 min review of 1 project with cleanup notes</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Technical Tests</div>
+            <div class="feat-row"><span class="feat-check">✓</span>1 senior-graded async test with written feedback on approach</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Behavioral Prep</div>
+            <div class="feat-row"><span class="feat-check">✓</span>60-min story session, industry question bank</div>
+            <div class="feat-row"><span class="feat-check">✓</span>STAR/CAR frameworks, 8–10 mapped stories, recruiter screen script</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan 2 — HOT -->
+      <div class="plan hot">
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-top">
+          <div class="plan-name">Offer Builder</div>
+          <div class="plan-for">Candidates getting interviews but not converting into offers</div>
+          <div class="plan-price">
+            <span class="plan-dollar">$</span>
+            <span class="plan-amt">899</span>
+          </div>
+          <div class="plan-desc">For candidates getting interviews but not closing</div>
+          <a href="#tools" class="btn btn-sage plan-btn">Build My Offer Strategy →</a>
+        </div>
+        <hr class="pdiv">
+        <div class="plan-feats">
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Resume / CV</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Targeted rewrite (JD-specific) — tailored to 1 JD + keyword mapping across 3 industries and 3 roles</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Cover Letter</div>
+            <div class="feat-row"><span class="feat-check">✓</span>5 custom drafts — 1 role-specific, 1 career-switch, 3 industry-specific</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">LinkedIn</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Recruiter magnet setup — profile rewrite, featured section, "Open to Work" strategy</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">GitHub</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Repo upgrade plan — audit + rewritten README for 1 project + impact bullets</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Technical Tests</div>
+            <div class="feat-row"><span class="feat-check">✓</span>2 async tests — baseline + improvement test + gap notes</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Mock Interviews</div>
+            <div class="feat-row"><span class="feat-check">✓</span>2 live sessions — expanded technical + interview readiness coverage</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Behavioral Prep</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Everything in $499 + target-role story tuning, offer conversation prep, 2 recorded answer reviews</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan 3 -->
+      <div class="plan">
+        <div class="plan-top">
+          <div class="plan-name">Offer Accelerator</div>
+          <div class="plan-for">Mid-career switchers and high-stakes candidates</div>
+          <div class="plan-price">
+            <span class="plan-dollar">$</span>
+            <span class="plan-amt">1300</span>
+          </div>
+          <div class="plan-desc">For competitive roles and high-pressure interview loops</div>
+          <a href="#tools" class="btn btn-ghost plan-btn">Prepare for My Dream Role →</a>
+        </div>
+        <hr class="pdiv">
+        <div class="plan-feats">
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Resume / CV</div>
+            <div class="feat-row"><span class="feat-check">✓</span>5 targeted resumes — continuous tuning based on applications and recruiter feedback (up to 30 days)</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Cover Letter</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Strategy suite — Startup (passion), Corporate (formal), Remote (async skills)</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">LinkedIn</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Network validation system — profile + endorsement strategy, build your network to raise SSI score</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">GitHub</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Codebase deep dive — line-by-line capstone review + refactor notes to pass EM scrutiny</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Technical Tests</div>
+            <div class="feat-row"><span class="feat-check">✓</span>3 async tests — baseline + progress + final readiness scorecard</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Mock Interviews</div>
+            <div class="feat-row"><span class="feat-check">✓</span>2 live sessions + target company drill + culture-specific prep</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Behavioral Prep</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Everything in $899 + Amazon LPs prep, multi-round behavioral loop, negotiation scripting</div>
+          </div>
+          <div class="feat-grp">
+            <div class="feat-grp-lbl">Bonus</div>
+            <div class="feat-row"><span class="feat-check">✓</span>Includes one free micro-course</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chooser-strip">
+      <div class="cs-item">
+        <strong>Interview Accelerator — $499</strong>
+        <span>You are applying but not getting enough interview calls.</span>
+      </div>
+      <div class="cs-item">
+        <strong>Offer Builder — $899</strong>
+        <span>You are getting interviews but struggling to convert them into offers.</span>
+      </div>
+      <div class="cs-item">
+        <strong>Offer Accelerator — $1,300</strong>
+        <span>Competitive roles, senior-level interviews, career transitions, or final-offer conversations.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FREE TOOLS ─── -->
+<section id="tools">
+  <div class="tools-blob tools-blob-1"></div>
+  <div class="tools-blob tools-blob-2"></div>
+  <div class="container">
+    <div class="tools-header">
+      <div>
+        <div class="section-eyebrow" style="color:#6ee7b7">Free Assessment Tools</div>
+        <h2 style="color:#fff">Find your career gap.<br>Close it faster.</h2>
+      </div>
+      <div>
+        <p>Use our free tools to understand what is blocking your next interview or offer — then choose focused support that matches your actual gap.</p>
+        <div style="display:flex;gap:1rem;margin-top:1.25rem">
+          <a href="#" class="btn btn-sage">Take Free Assessment</a>
+          <a href="#pricing" class="btn" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.12)">Browse Plans</a>
+        </div>
+      </div>
+    </div>
+    <div class="tools-grid">
+      <div class="tool">
+        <div class="tool-hd">
+          <div class="tool-icon a">📊</div>
+          <div class="tool-time">3–5 min</div>
+        </div>
+        <h3>Career Readiness Score</h3>
+        <p>Check how ready your profile is for your next tech role across resume, LinkedIn, GitHub, interview skills, and application strategy.</p>
+        <div class="tool-checks">
+          <div class="tool-check">Resume strength and structure</div>
+          <div class="tool-check">LinkedIn visibility and keywords</div>
+          <div class="tool-check">GitHub credibility and documentation</div>
+          <div class="tool-check">Interview readiness level</div>
+          <div class="tool-check">Application strategy gaps</div>
+        </div>
+        <div class="tool-result-box">
+          <div class="trb-lbl">Example result</div>
+          <p>Your Career Readiness Score: 64 / 100 — You have technical potential, but your resume, GitHub, and interview story need stronger alignment before you apply aggressively.</p>
+        </div>
+        <a href="#" class="tool-cta">Check My Career Score</a>
+      </div>
+
+      <div class="tool">
+        <div class="tool-hd">
+          <div class="tool-icon b">🔍</div>
+          <div class="tool-time">3–5 min</div>
+        </div>
+        <h3>Resume Match Checker</h3>
+        <p>Check whether your resume matches the job description you are targeting and discover what keywords, skills, and project signals may be missing.</p>
+        <div class="tool-checks">
+          <div class="tool-check">Resume-to-JD alignment score</div>
+          <div class="tool-check">Missing role keywords</div>
+          <div class="tool-check">Skill visibility gaps</div>
+          <div class="tool-check">Project relevance</div>
+          <div class="tool-check">ATS readability</div>
+        </div>
+        <div class="tool-result-box">
+          <div class="trb-lbl">Example result</div>
+          <p>Resume Match Score: 52 / 100 — Your resume has some relevant skills, but project bullets and technical keywords need better alignment with this job description.</p>
+        </div>
+        <a href="#" class="tool-cta">Check My Resume Match</a>
+      </div>
+
+      <div class="tool">
+        <div class="tool-hd">
+          <div class="tool-icon c">📞</div>
+          <div class="tool-time">2–4 min</div>
+        </div>
+        <h3>Interview Call Diagnosis</h3>
+        <p>Applying but not hearing back? Find out whether your resume, LinkedIn, GitHub, job targeting, or application strategy is likely holding you back.</p>
+        <div class="tool-checks">
+          <div class="tool-check">Resume clarity and ATS signals</div>
+          <div class="tool-check">LinkedIn profile visibility</div>
+          <div class="tool-check">GitHub proof of work</div>
+          <div class="tool-check">Application volume and targeting</div>
+          <div class="tool-check">Job description alignment</div>
+        </div>
+        <div class="tool-result-box">
+          <div class="trb-lbl">Example result</div>
+          <p>Diagnosis: Profile visibility problem — Your resume may not be the only issue. Your LinkedIn and GitHub do not currently support your application strongly enough.</p>
+        </div>
+        <a href="#" class="tool-cta">Find Out Why I'm Not Getting Calls</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STORIES ─── -->
+<section id="stories">
+  <div class="container">
+    <div class="stories-hd">
+      <div>
+        <div class="section-eyebrow" style="color:var(--rust)">Candidate outcomes</div>
+        <h2>Better career assets.<br>Stronger interviews.<br><em style="font-style:italic">Clearer confidence.</em></h2>
+      </div>
+    </div>
+    <div class="stories-grid">
+      <div class="story">
+        <div class="story-tag">Story 01</div>
+        <h3>From silent applications to a clearer profile</h3>
+        <div class="story-ba">
+          <div class="ba before">
+            <div class="ba-lbl">Before</div>
+            <p>Skills and projects present, but no recruiter attention. Resume structure, LinkedIn clarity, and GitHub presentation were all unclear.</p>
+          </div>
+          <div class="ba after">
+            <div class="ba-lbl">After</div>
+            <p>Clearer profile across all three surfaces — skills easier to read, roles better targeted, and recruiter attention increased.</p>
+          </div>
+        </div>
+      </div>
+      <div class="story">
+        <div class="story-tag">Story 02</div>
+        <h3>From project confusion to project confidence</h3>
+        <div class="story-ba">
+          <div class="ba before">
+            <div class="ba-lbl">Before</div>
+            <p>GitHub project existed but the candidate struggled to explain architecture, features, and technical decisions during interviews.</p>
+          </div>
+          <div class="ba after">
+            <div class="ba-lbl">After</div>
+            <p>Could explain the problem, solution, tech stack, trade-offs, and improvement roadmap confidently and with structure.</p>
+          </div>
+        </div>
+      </div>
+      <div class="story">
+        <div class="story-tag">Story 03</div>
+        <h3>From interview attempts to stronger readiness</h3>
+        <div class="story-ba">
+          <div class="ba before">
+            <div class="ba-lbl">Before</div>
+            <p>Getting interviews but not communicating clearly in final rounds. Technical explanation and behavioral answers were underprepared.</p>
+          </div>
+          <div class="ba after">
+            <div class="ba-lbl">After</div>
+            <p>Stronger answers, clearer examples, and a more structured preparation plan ready for high-pressure final-round scenarios.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--sage)">FAQ</div>
+    <div class="faq-layout">
+      <div class="faq-left">
+        <h2>Common questions,<br>honest answers.</h2>
+        <p>No marketing speak. Just direct answers about what Cogent Career Accelerator does and doesn't do.</p>
+        <div class="faq-illo">
+          <div class="faq-illo-quote">"Human reviewers and coaches are involved in judging, improving, and signing off on every piece of candidate material."</div>
+
+          <!-- Mini illustrated duo -->
+          <svg width="200" height="120" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Person 1 (reviewer) -->
+            <ellipse cx="65" cy="30" rx="18" ry="20" fill="#f0c8a0"/>
+            <path d="M48 22 Q50 6 65 4 Q80 6 82 22 Q76 12 65 10 Q54 12 48 22Z" fill="#2d1a0a"/>
+            <rect x="47" y="50" width="36" height="38" rx="8" fill="#3d6b52"/>
+            <circle cx="57" cy="29" r="4" fill="#2d1a0a"/>
+            <circle cx="73" cy="29" r="4" fill="#2d1a0a"/>
+            <path d="M57 40 Q65 48 73 40" stroke="#2d1a0a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <rect x="33" y="58" width="16" height="10" rx="5" fill="#3d6b52"/>
+            <rect x="81" y="58" width="16" height="10" rx="5" fill="#3d6b52"/>
+            <!-- Clipboard -->
+            <rect x="90" y="42" width="40" height="50" rx="4" fill="#fff" opacity="0.15"/>
+            <rect x="100" y="52" width="20" height="3" rx="1" fill="#6ee7b7" opacity="0.8"/>
+            <rect x="100" y="59" width="24" height="2" rx="1" fill="rgba(255,255,255,0.4)"/>
+            <rect x="100" y="65" width="20" height="2" rx="1" fill="rgba(255,255,255,0.4)"/>
+            <rect x="100" y="71" width="22" height="2" rx="1" fill="rgba(255,255,255,0.4)"/>
+            <!-- Person 2 (candidate) -->
+            <ellipse cx="155" cy="35" rx="16" ry="18" fill="#c4a07a"/>
+            <path d="M140 28 Q142 14 155 12 Q168 14 170 28 Q165 18 155 16 Q145 18 140 28Z" fill="#1a1a2e"/>
+            <rect x="139" y="53" width="32" height="36" rx="7" fill="#c44b28"/>
+            <circle cx="149" cy="34" r="3.5" fill="#1a1a2e"/>
+            <circle cx="161" cy="34" r="3.5" fill="#1a1a2e"/>
+            <path d="M150 44 Q155 50 160 44" stroke="#1a1a2e" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Connection line -->
+            <path d="M83 65 Q111 55 139 65" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+            <!-- Floor shadow -->
+            <ellipse cx="65" cy="100" rx="28" ry="8" fill="rgba(255,255,255,0.06)"/>
+            <ellipse cx="155" cy="100" rx="22" ry="7" fill="rgba(255,255,255,0.06)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="faq-items">
+        <div class="faq-item open">
+          <button class="faq-q" onclick="toggleFaq(this)">What is Cogent Career Accelerator?<span class="fq-icon">+</span></button>
+          <div class="faq-a">A human-led career acceleration division from Cogent Infotech. It supports tech candidates with profile improvement, interview preparation, application support where eligible, and focused micro-upskilling. It's open to Cogent students, freshers, career switchers, and external early-career professionals.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is this only for Cogent University students?<span class="fq-icon">+</span></button>
+          <div class="faq-a">No. It supports Cogent candidates, students, freshers, career switchers, and external early-career professionals who need structured support for tech roles.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Do you guarantee a job?<span class="fq-icon">+</span></button>
+          <div class="faq-a">No. No ethical career service can guarantee a job. Cogent Career Accelerator improves readiness, positioning, preparation, and job-search execution — but hiring decisions remain with employers.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is this an AI resume tool?<span class="fq-icon">+</span></button>
+          <div class="faq-a">No. AI may support research, structure, or speed internally, but candidate-facing deliverables are human-reviewed and written to sound authentic, specific, and credible. Every output is reviewed by a qualified human professional.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What does "human-in-the-loop" mean?<span class="fq-icon">+</span></button>
+          <div class="faq-a">It means human reviewers and coaches are involved in judging, improving, and signing off on candidate materials or preparation feedback. The goal is not automated rewriting — the goal is better judgment and more authentic communication.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Will Cogent write my project or fake experience?<span class="fq-icon">+</span></button>
+          <div class="faq-a">No. Cogent Career Accelerator can help review, organize, document, and explain existing work. It does not create fake experience or misrepresent a candidate's abilities.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What are micro-courses?<span class="fq-icon">+</span></button>
+          <div class="faq-a">Short, focused learning modules in high-demand areas such as AI, cybersecurity, LLM applications, RAG, graph databases, and Excel with AI — designed to close the specific skill gap that is costing you the role.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Does Cogent Career Accelerator apply to jobs for me?<span class="fq-icon">+</span></button>
+          <div class="faq-a">Application support is part of the broader product model and may be available in eligible plans or tracks. Speak with the team to understand what application support looks like for your specific situation and goal.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section id="cta">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-eyebrow" style="color:#6ee7b7;justify-content:center">Ready to start?</div>
+    <h2>You don't have to do this alone.</h2>
+    <p>Get a free career audit and let Cogent review where your profile stands today. No commitment required.</p>
+    <div class="cta-btns">
+      <a href="#tools" class="btn btn-sage">Free Assessment Tools</a>
+      <a href="#pricing" class="btn" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.8);border:1.5px solid rgba(255,255,255,0.15)">Explore Plans</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-logo">Cogent Career Accelerator</div>
+      <ul class="footer-links">
+        <li><a href="#pillars">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#tools">Free Tools</a></li>
+        <li><a href="#stories">Outcomes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="footer-copy">© 2025 Cogent Infotech</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+// Active nav on scroll
+const sects=document.querySelectorAll('section[id]');
+const navAs=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sects.forEach(s=>{if(window.scrollY>=s.offsetTop-90)cur=s.id});
+  navAs.forEach(a=>{
+    a.style.color=a.getAttribute('href')==='#'+cur?'var(--sage)':'';
+  });
+});
+</script>
+</body>
+</html>
